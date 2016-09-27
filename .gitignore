@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Certamen 1 Lenguaje Programacion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var Matrizrut = new Array(100);
+            var Matriznombre = new Array(100);
+            var MatrizvalorHonorario = new Array(100);
+            var contador=0;
+      
+         function IngresandoDatos(){
+             var rut= document.getElementById("rut").value;
+             var nombre= document.getElementById("nombre").value;
+             var valorHonorario = document.getElementById("valorHonorario").value;
+             Matrizrut[contador]=rut;
+             Matriznombre[contador]=nombre;
+             MatrizvalorHonorario[contador]=valorHonorario;
+             alert("Has ingresado los datos para el rut : "+ Matrizrut[contador]);
+             contador++;
+                   }
+         
+         function LimpiandoDatos(){
+             document.getElementById("rut").value ="";
+             document.getElementById("nombre").value="";
+             document.getElementById("valorHonorario").value="";  
+         }
+         
+         function ObtenerDatos(){
+             var suma=0;
+             for(i=0;i<contador;i++){
+               suma+=parseInt(MatrizvalorHonorario[i]); 
+             }
+             porcentaje=suma*0.10;
+             resta=suma-porcentaje;
+             
+              alert("La suma total del valor honorario es :"+suma+ 
+                      "\nsu porcentaje es :"+ porcentaje+
+                      "\nsu valor a pagar es :"+resta); 
+         }
+         
+         function Rutdeterminado(){
+             var rrut=0;
+             var rrut=document.getElementById("rutDeterminado").value;
+             alert(rrut+"elcontador"+contador);
+             for(i=0;i<contador;i++){
+                 if(Matrizrut[i]==rrut){
+                     
+                     
+                     alert("Existe el rut ingresado");
+                   break;
+                 }
+                 else{
+                     alert("El rut ingresado no existe");
+                    break;
+                 }
+                 break;
+                 
+             }                 
+         }
+         function mostrar(){
+             for(i=0;i<contador;i++){
+                 alert(Matrizrut[i]);
+                 
+             }
+             
+         }
+         
+        </script>
+ 
+    </head>
+    
+    <body bgcolor="celeste">
+        
+        Ingrese el rut :<input type="number" id="rut" value="1"><br>
+       Ingrese el Nombre:<input type="text" id="nombre" value=""><br>
+       Ingrese el ValorHonorario<input type ="number" id ="valorHonorario" value="0"><br>
+       <input type ="button" value="Ingresar" onclick="IngresandoDatos()" >
+       <input type="button" value="Limpiar" onclick="LimpiandoDatos()">
+       <input type="button" value="obtener Datos" onclick="ObtenerDatos()"><br>
+       <input type="number" id="rutDeterminado" placeholder="Ingrese rut a buscar">
+       <input type="button" value="buscar por rut" onclick="Rutdeterminado()">
+       <input type="button" value="mostrar" onclick="mostrar()">
+    </body>
+</html>
